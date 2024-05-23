@@ -28,7 +28,7 @@ const Sidebar = () => {
             </Link>
           </ul>
         </li>
-        
+
         <li className="px-2 py-3">
           <a href="#admin" className="px-2 text-light-cyan">
             Admin
@@ -57,10 +57,12 @@ const Sidebar = () => {
                 <p>Rekap Kehadiran</p>
               </li>
             </Link>
-            <li className="py-3 px-2 hover:bg-[#384a49] hover:rounded-md flex items-center gap-2">
-              <AiOutlineQrcode style={{ fontSize: 20, color: "#75a19d" }} />
-              <a href="#ambil-qr-code">Ambil QR Code</a>
-            </li>
+            <Link to="buatqrcode">
+              <li className="py-3 px-2 hover:bg-[#384a49] hover:rounded-md flex items-center gap-2">
+                <AiOutlineQrcode style={{ fontSize: 20, color: "#75a19d" }} />
+                <p>Ambil QR Code</p>
+              </li>
+            </Link>
           </ul>
         </li>
       </ul>
