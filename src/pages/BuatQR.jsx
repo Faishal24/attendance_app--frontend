@@ -1,32 +1,40 @@
 import axios from "axios";
 import React, { useState } from "react";
+import QRCode from "qrcode.react";
 
 const BuatQR = () => {
-  const [qrCode, setQRCode] = useState("");
+  const [date, setDate] = useState("");
+  const [qrCodeData, setQRCodeData] = useState("");
+  const [error, setError] = useState("");
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
 
   const generateQRCode = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/qrcode/generate"
+        "http://192.168.1.3:3000/api/admin/generate",
+        { date }
       );
-      setQRCode(response.data.qrCodeDataURL);
-    } catch (err) {
-      console.error(err);
+      setQRCodeData(response.data.qrCodeData);
+      setError("");
+    } catch (error) {
+      console.error("QR code generation error:", error);
+      setError("Failed to generate QR code");
     }
   };
 
   return (
-    <div className="w-full">
-      <h1 className="text-2xl font-bold mb-3">Buat QRCode</h1>
-      <div className="flex flex-col w-[40em] items-center gap-5">
-        <button
-          onClick={generateQRCode}
-          className="p-2 bg-blue-500 text-white rounded-lg"
-        >
-          Generate QR Code
-        </button>
-        {qrCode && <img src={qrCode} alt="QR Code" className="w-[20em]" />}
+    <div>
+      <h2>Generate QR Code</h2>
+      <div>
+        <label htmlFor="date">Date:</label>
+        <input type="date" id="date" value={date} onChange={handleDateChange} />
       </div>
+      <button onClick={generateQRCode}>Generate QR Code</button>
+      {qrCodeData && <QRCode value={qrCodeData} size={512}/>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
