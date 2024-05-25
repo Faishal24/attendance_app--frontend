@@ -19,25 +19,44 @@ const BuatQR = () => {
       );
       setQRCodeData(response.data.qrCodeData);
       setError("");
-      console.log(date)
+      console.log(date);
       // axios.post("http://localhost:3000/api/employee/checkin", new Date(date));
     } catch (error) {
       console.error("QR code generation error:", error);
-      setError("Failed to generate QR code");
+      setError("Silahkan masukkan tanggal terlebih dahulu");
     }
   };
 
   return (
     <div>
-      <h2>Generate QR Code</h2>
-      <div>
-        <label htmlFor="date">Date:</label>
-        <input type="date" id="date" value={date} onChange={handleDateChange} />
+      <h1 className="text-2xl font-bold mb-3">Generate QR Code</h1>
+      <div className="flex-col flex items-center">
+        <div className="flex gap-4 mb-[5em] w-full">
+          <div className="flex items-center gap-2">
+            <label htmlFor="date">Tanggal:</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={handleDateChange}
+              className="p-2 border-[#293635] rounded-lg border-2"
+            />
+          </div>
+          <button
+            onClick={generateQRCode}
+            className="w-full py-2 px-3 border-2 rounded-lg text-secondary-dark border-secondary-dark hover:bg-secondary-dark hover:text-white "
+          >
+            Generate QR Code
+          </button>
+        </div>
+        {qrCodeData && (
+          <div className="p-3 border-4 border-slate-950 w-min">
+            <QRCode value={qrCodeData} size={384} />
+          </div>
+        )}
       </div>
-      <button onClick={generateQRCode}>Generate QR Code</button>
-      {qrCodeData && <QRCode value={qrCodeData} size={512}/>}
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={() => console.log(qrCodeData)}>ss</button>
+      {/* <button onClick={() => console.log(qrCodeData)}>ss</button> */}
     </div>
   );
 };

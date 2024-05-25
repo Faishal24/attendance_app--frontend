@@ -11,9 +11,10 @@ function App() {
   return (
     <Router>
       <div className="font-sans">
-        <Header />
+        {/* <Header /> */}
         <Sidebar />
-        <div className="content ml-64 pt-20 p-6 min-h-screen bg-white">
+        {/* <div className="content ml-64 pt-20 p-6 min-h-screen bg-white"> */}
+        <div className="content ml-64 p-6 min-h-screen bg-white">
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/datakehadiran" element={<Kehadiran />} />

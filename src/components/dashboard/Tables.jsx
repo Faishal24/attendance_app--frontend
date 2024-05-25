@@ -28,9 +28,10 @@ const Tables = () => {
           <LiaTimesCircle className="text-2xl" />
           <p className="text-xl my-3">Daftar Pegawai Terlambat [Hari Ini]</p>
         </div>
+
         <table className="w-[37em] bg-white rounded-lg border border-gray-700 overflow-hidden">
           <thead>
-            <tr className="w-full bg-[#293635] text-white">
+            <tr className="w-full bg-secondary text-secondary-text">
               <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
               <th className="text-left py-3 px-4 font-semibold text-sm">
                 Jam Masuk
@@ -54,6 +55,9 @@ const Tables = () => {
             ))}
           </tbody>
         </table>
+        <button className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover">
+          Lihat Selengkapnya
+        </button>
       </div>
 
       <div className="overflow-x-auto mt-8">
@@ -63,7 +67,7 @@ const Tables = () => {
         </div>
         <table className="w-[37em] bg-white rounded-lg border border-gray-700 overflow-hidden">
           <thead>
-            <tr className="w-full bg-[#293635] text-white">
+            <tr className="w-full bg-secondary text-secondary-text">
               <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
               <th className="text-left py-3 px-4 font-semibold text-sm">
                 Waktu Datang
@@ -87,6 +91,9 @@ const Tables = () => {
             ))}
           </tbody>
         </table>
+        <button className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover">
+          Lihat Selengkapnya
+        </button>
       </div>
     </div>
   );

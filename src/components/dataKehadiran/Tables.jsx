@@ -13,7 +13,7 @@ const Tables = () => {
     <div className="overflow-x-auto mt-3">
       <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">
         <thead>
-          <tr className="w-full bg-[#293635] text-white">
+          <tr className="w-full bg-secondary text-secondary-text">
             <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
             <th className="text-left py-3 px-4 font-semibold text-sm">Tanggal</th>
             <th className="text-left py-3 px-4 font-semibold text-sm">Nama Pegawai</th>
