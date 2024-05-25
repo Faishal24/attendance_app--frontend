@@ -9,14 +9,16 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Profile from "/profile.png";
+import DrawerAdmin from "./DrawerAdmin";
 
 const Sidebar = () => {
   return (
     <aside className="fixed left-0 w-64 h-full bg-secondary text-secondary-text pt-4">
       {/* <h1 className=" px-4 text-xl font-bold">Aplikasi Presensi</h1> */}
-      <div className="px-4 py-2 flex items-center gap-4">
+      <div className="px-4 py-2 flex items-center justify-between">
         <img src={Profile} style={{ width: 50, borderRadius: 10 }} />
         <h1 className="text-2xl font-bold">Admin</h1>
+        <DrawerAdmin/>
       </div>
       <Divider />
       <ul>

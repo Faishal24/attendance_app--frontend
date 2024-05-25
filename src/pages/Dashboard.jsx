@@ -5,7 +5,9 @@ import Tables from "../components/dashboard/Tables";
 const Dashboard = () => {
   return (
     <>
-      <h1 className="text-2xl font-bold mb-3">Dashboard</h1>
+      <div className="flex justify-between">
+        <h1 className="text-2xl font-bold mb-3">Dashboard</h1>
+      </div>
       <Cards />
       <Tables />
     </>
