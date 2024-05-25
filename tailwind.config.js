@@ -13,7 +13,7 @@ export default {
 
         'secondary': '#BDDFDD',
         'secondary-dark': '#0047a7',
-        'secondary-text': '#181c1c',
+        'secondary-text': '#1a1f1f',
         'secondary-hover': '#caedeb',
       }
     },

@@ -1,14 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
 import QRCode from "qrcode.react";
+import Select from "react-select";
 
 const BuatQR = () => {
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [qrCodeData, setQRCodeData] = useState("");
   const [error, setError] = useState("");
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
+    console.log(date);
+  };
+
+  const handleTimeChange = (e) => {
+    setTime(e.value);
+    console.log(time);
   };
 
   const generateQRCode = async () => {
@@ -27,11 +35,16 @@ const BuatQR = () => {
     }
   };
 
+  const options = [
+    { value: "pagi", label: "Pagi" },
+    { value: "sore", label: "Sore" },
+  ];
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-3">Generate QR Code</h1>
       <div className="flex-col flex items-center">
-        <div className="flex gap-4 mb-[5em] w-full">
+        <div className="flex gap-4 mb-5 w-full">
           <div className="flex items-center gap-2">
             <label htmlFor="date">Tanggal:</label>
             <input
@@ -39,16 +52,18 @@ const BuatQR = () => {
               id="date"
               value={date}
               onChange={handleDateChange}
-              className="p-2 border-[#293635] rounded-lg border-2"
+              className="p-1 border-[#d6d8d8] rounded-md border w-40 focus:border-blue-400 focus:border-2 focus:outline-0"
             />
+            <label htmlFor="date">Waktu Presensi:</label>
+            <Select className="w-40 rounded" options={options} onChange={handleTimeChange}/>
           </div>
-          <button
-            onClick={generateQRCode}
-            className="w-full py-2 px-3 border-2 rounded-lg text-secondary-dark border-secondary-dark hover:bg-secondary-dark hover:text-white "
-          >
-            Generate QR Code
-          </button>
         </div>
+        <button
+          onClick={generateQRCode}
+          className="w-full py-2 px-3 mb-[3em] border-2 rounded-lg text-secondary-dark border-secondary-dark hover:bg-secondary-dark hover:text-white "
+        >
+          Generate QR Code
+        </button>
         {qrCodeData && (
           <div className="p-3 border-4 border-slate-950 w-min">
             <QRCode value={qrCodeData} size={384} />
