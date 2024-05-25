@@ -14,11 +14,13 @@ const BuatQR = () => {
   const generateQRCode = async () => {
     try {
       const response = await axios.post(
-        "http://192.168.1.3:3000/api/admin/generate",
+        "http://localhost:3000/api/admin/generate",
         { date }
       );
       setQRCodeData(response.data.qrCodeData);
       setError("");
+      console.log(date)
+      // axios.post("http://localhost:3000/api/employee/checkin", new Date(date));
     } catch (error) {
       console.error("QR code generation error:", error);
       setError("Failed to generate QR code");
@@ -35,6 +37,7 @@ const BuatQR = () => {
       <button onClick={generateQRCode}>Generate QR Code</button>
       {qrCodeData && <QRCode value={qrCodeData} size={512}/>}
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <button onClick={() => console.log(qrCodeData)}>ss</button>
     </div>
   );
 };
