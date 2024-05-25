@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Tables = () => {
   const [employee, setEmployee] = useState([]);
@@ -44,9 +45,11 @@ const Tables = () => {
                 <td className="text-left py-3 px-4">{item.name}</td>
                 <td className="text-left py-3 px-4">{item.posisi}</td>
                 <td className="text-left py-3 px-4 flex gap-2">
+                  <Link to="/detailkaryawan" state={{ from: item }}>
                   <button className="py-1 px-2 bg-green-500 text-white rounded-lg">
                     Lihat
                   </button>
+                  </Link>
                   <button className="py-1 px-2 bg-red-500 text-white rounded-lg">
                     Hapus
                   </button>
