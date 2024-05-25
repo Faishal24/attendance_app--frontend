@@ -7,7 +7,7 @@ const BuatQR = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [qrCodeData, setQRCodeData] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState("");  
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
@@ -16,14 +16,13 @@ const BuatQR = () => {
 
   const handleTimeChange = (e) => {
     setTime(e.value);
-    console.log(time);
   };
 
   const generateQRCode = async () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/admin/generate",
-        { date }
+        { date, time }
       );
       setQRCodeData(response.data.qrCodeData);
       setError("");
@@ -55,7 +54,11 @@ const BuatQR = () => {
               className="p-1 border-[#d6d8d8] rounded-md border w-40 focus:border-blue-400 focus:border-2 focus:outline-0"
             />
             <label htmlFor="date">Waktu Presensi:</label>
-            <Select className="w-40 rounded" options={options} onChange={handleTimeChange}/>
+            <Select
+              className="w-40 rounded"
+              options={options}
+              onChange={handleTimeChange}
+            />
           </div>
         </div>
         <button
