@@ -3,7 +3,6 @@ import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import Profile from "/profile2.png";
 import axios from "axios";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 const DrawerAdmin = () => {
   const [open, setOpen] = useState(false);
@@ -100,11 +99,13 @@ const DrawerAdmin = () => {
 
   return (
     <div>
-
-        <AiOutlineQuestionCircle className="text-2xl" onClick={() =>
+      <img
+        src={Profile}
+        style={{ width: 50, borderRadius: 10 }}
+        onClick={() =>
           toggleDrawer(true, employee.filter((item) => item.role == "admin")[0])
-        }/>
-      
+        }
+      />
       <Drawer open={open} anchor="right" onClose={() => toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
