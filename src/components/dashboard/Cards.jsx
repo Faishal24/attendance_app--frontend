@@ -2,6 +2,7 @@ import React from "react";
 import { GoPeople } from "react-icons/go";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { MdOutlineAssignmentLate } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const cards = () => {
   return (
@@ -13,7 +14,9 @@ const cards = () => {
         </div>
         <div>
           <div className="bg-[#122f94] w-full h-px"></div>
+          <Link to="/datakaryawan">
           <p className="text-white mt-2">Lihat Selengkapnya</p>
+          </Link>
         </div>
       </div>
 

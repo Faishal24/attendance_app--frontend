@@ -15,6 +15,7 @@ export default {
         'secondary-dark': '#0047a7',
         'secondary-text': '#1a1f1f',
         'secondary-hover': '#caedeb',
+        'secondary-hover2': '#2366c2',
       }
     },
   },

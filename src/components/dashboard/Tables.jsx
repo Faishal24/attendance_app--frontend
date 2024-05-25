@@ -37,14 +37,14 @@ const Tables = () => {
   };
 
   return (
-    <div className="flex w-full justify-between">
-      <div className="overflow-x-auto mt-8">
+    <div className="flex w-full justify-between gap-10">
+      <div className="overflow-x-auto mt-8 w-2/4">
         <div className="flex items-center gap-2">
           <LiaTimesCircle className="text-2xl" />
           <p className="text-xl my-3">Daftar Pegawai Terlambat [Hari Ini]</p>
         </div>
 
-        <table className="w-[37em] bg-white rounded-lg border border-gray-700 overflow-hidden">
+        <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">
           <thead>
             <tr className="w-full bg-secondary text-secondary-text">
               <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
@@ -92,12 +92,12 @@ const Tables = () => {
         </button>
       </div>
 
-      <div className="overflow-x-auto mt-8">
+      <div className="overflow-x-auto mt-8 w-2/4">
         <div className="flex items-center gap-2">
           <AiOutlineFieldTime className="text-2xl" />
           <p className="text-xl my-3">Daftar Pegawai Hadir [Hari Ini]</p>
         </div>
-        <table className="w-[37em] bg-white rounded-lg border border-gray-700 overflow-hidden">
+        <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">
           <thead>
             <tr className="w-full bg-secondary text-secondary-text">
               <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
