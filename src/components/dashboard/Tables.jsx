@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { LiaTimesCircle } from "react-icons/lia";
+import axios from "axios";
 
 const Tables = () => {
-  const dataHadir = [
-    { time: "06:42", name: "Jane Roe", status: "Hadir" },
-    { time: "06:42", name: "Richard Roe", status: "Hadir" },
-    { time: "06:48", name: "Alex Smith", status: "Hadir" },
-    { time: "06:49", name: "John Doe", status: "Hadir" },
-    { time: "06:52", name: "Alice Johnson", status: "Hadir" },
-    { time: "06:56", name: "Michael Brown", status: "Hadir" },
-  ];
+  const [morning, setMorning] = useState([]);
+  const [afternoon, setAfternoon] = useState([]);
+  const [employee, setEmployee] = useState([]);
 
-  const dataTelat = [
-    { time: "07:05", name: "Emily Davis", status: "Telat" },
-    { time: "07:10", name: "David Wilson", status: "Telat" },
-    { time: "07:15", name: "Sophia Martinez", status: "Telat" },
-    { time: "07:20", name: "James Anderson", status: "Telat" },
-    { time: "07:25", name: "Linda Thomas", status: "Telat" },
-    { time: "07:30", name: "Daniel Lee", status: "Telat" },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/admin/attendance/morning")
+      .then((result) => setMorning(result.data))
+      .catch((error) => console.log(error));
+
+    axios
+      .get("http://localhost:3000/api/admin/employee")
+      .then((result) => setEmployee(result.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const mergedData = employee.map((employee) => {
+    const morningRecord = morning.find(
+      (record) => record.user_id === employee._id
+    );
+
+    if (morningRecord) {
+      employee.date = morningRecord.date;
+      employee.berangkat = morningRecord.time;
+    }
+    return employee;
+  });
+
+  const test = () => {
+    console.log(mergedData);
+  };
 
   return (
     <div className="flex w-full justify-between">
@@ -45,17 +60,34 @@ const Tables = () => {
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {dataTelat.map((row, index) => (
-              <tr key={row.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
-                <td className="text-left py-3 px-4">{index + 1}</td>
-                <td className="text-left py-3 px-4">{row.time}</td>
-                <td className="text-left py-3 px-4">{row.name}</td>
-                <td className="text-left py-3 px-4">{row.status}</td>
-              </tr>
-            ))}
+            {mergedData
+              .filter((item) => {
+                if (item.berangkat) {
+                  const [hours, minutes] = item.berangkat.split(":");
+                  return (
+                    parseInt(hours, 10) > 8 ||
+                    (parseInt(hours, 10) === 8 && parseInt(minutes, 10) > 0)
+                  );
+                }
+                return false;
+              })
+              .map((row, index) => (
+                <tr
+                  key={row.id}
+                  className={index % 2 === 0 ? "bg-gray-100" : ""}
+                >
+                  <td className="text-left py-3 px-4">{index + 1}</td>
+                  <td className="text-left py-3 px-4">{row.berangkat}</td>
+                  <td className="text-left py-3 px-4">{row.name}</td>
+                  <td className="text-left py-3 px-4">Terlambat</td>
+                </tr>
+              ))}
           </tbody>
         </table>
-        <button className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover">
+        <button
+          className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover"
+          onClick={() => test()}
+        >
           Lihat Selengkapnya
         </button>
       </div>
@@ -81,14 +113,23 @@ const Tables = () => {
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {dataHadir.map((row, index) => (
-              <tr key={row.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
-                <td className="text-left py-3 px-4">{index + 1}</td>
-                <td className="text-left py-3 px-4">{row.time}</td>
-                <td className="text-left py-3 px-4">{row.name}</td>
-                <td className="text-left py-3 px-4">{row.status}</td>
-              </tr>
-            ))}
+            {mergedData
+              .filter((item) => item.berangkat && item.berangkat !== null)
+              .map((row, index) => (
+                <tr
+                  key={row.id}
+                  className={index % 2 === 0 ? "bg-gray-100" : ""}
+                >
+                  <td className="text-left py-3 px-4">{index + 1}</td>
+                  <td className="text-left py-3 px-4">{row.berangkat}</td>
+                  <td className="text-left py-3 px-4">{row.name}</td>
+                  <td className="text-left py-3 px-4">
+                    {row.berangkat.split(":")[0] > 8
+                      ? "Terlambat"
+                      : "Tepat Waktu"}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <button className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover">

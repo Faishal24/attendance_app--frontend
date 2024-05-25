@@ -1,6 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 const Tables = () => {
+  const [admin, setAdmin] = useState([])
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/admin/employee")
+      .then((result) => setAdmin(result.data))
+      .catch((error) => console.log(error));
+  });
+
   const dataHadir = [
     {
       nama: "Jeff Maruli",
@@ -31,7 +41,7 @@ const Tables = () => {
           <tr className="w-full bg-secondary text-secondary-text">
             <th className="text-left py-3 px-4 font-semibold text-sm">No</th>
             <th className="text-left py-3 px-4 font-semibold text-sm">
-              Nama Lengkap
+              Nama Admin
             </th>
             <th className="text-left py-3 px-4 font-semibold text-sm">
               Username
@@ -50,18 +60,18 @@ const Tables = () => {
           </tr>
         </thead>
         <tbody className="text-gray-700">
-          {dataHadir.map((row, index) => (
-            <tr key={row.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
+          {admin.filter(item => item.role == "admin").map((item, index) => (
+            <tr key={item.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
               <td className="text-left py-3 px-4">{index + 1}</td>
-              <td className="text-left py-3 px-4">{row.nama}</td>
-              <td className="text-left py-3 px-4">{row.username}</td>
-              <td className="text-left py-3 px-4">{row.email}</td>
-              <td className="text-left py-3 px-4">{row.level}</td>
-              <td className="text-left py-3 px-4">{row.createdOn}</td>
+              <td className="text-left py-3 px-4">{item.name}</td>
+              <td className="text-left py-3 px-4">{item.username}</td>
+              <td className="text-left py-3 px-4">{item.email}</td>
+              <td className="text-left py-3 px-4">{item.role}</td>
+              <td className="text-left py-3 px-4">{item.dibuat}</td>
               <td className="text-left py-3 px-4">
-                <button className="py-1 px-2 bg-green-500 text-white rounded-lg">
+                <div className="py-1 px-2 w-min bg-green-500 text-white rounded-lg">
                   Aktif
-                </button>
+                </div>
               </td>
               <td className="text-left py-3 px-4 flex gap-2">
                 <button className="py-1 px-2 bg-amber-500 text-white rounded-lg">
