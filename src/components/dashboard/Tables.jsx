@@ -70,7 +70,7 @@ const Tables = () => {
                   );
                 }
                 return false;
-              })
+              }).slice(0, 6)
               .map((row, index) => (
                 <tr
                   key={row.id}
@@ -114,7 +114,7 @@ const Tables = () => {
           </thead>
           <tbody className="text-gray-700">
             {mergedData
-              .filter((item) => item.berangkat && item.berangkat !== null)
+              .filter((item) => item.berangkat && item.berangkat !== null).slice(0, 6)
               .map((row, index) => (
                 <tr
                   key={row.id}
@@ -124,9 +124,11 @@ const Tables = () => {
                   <td className="text-left py-3 px-4">{row.berangkat}</td>
                   <td className="text-left py-3 px-4">{row.name}</td>
                   <td className="text-left py-3 px-4">
-                    {row.berangkat.split(":")[0] > 8
-                      ? "Terlambat"
-                      : "Tepat Waktu"}
+                  {row.berangkat.split(":")[0] > 8 ||
+                  (row.berangkat.split(":")[0] == 8 &&
+                    row.berangkat.split(":")[1] > 0)
+                    ? "Terlambat"
+                    : "Tepat Waktu"}
                   </td>
                 </tr>
               ))}

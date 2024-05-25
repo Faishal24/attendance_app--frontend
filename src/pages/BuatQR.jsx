@@ -72,8 +72,8 @@ const BuatQR = () => {
             <QRCode value={qrCodeData} size={384} />
           </div>
         )}
-      </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
       {/* <button onClick={() => console.log(qrCodeData)}>ss</button> */}
     </div>
   );
