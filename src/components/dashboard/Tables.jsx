@@ -34,6 +34,7 @@ const Tables = () => {
 
   const test = () => {
     console.log(mergedData);
+    console.log(process.env.IP_ADDRESS);
   };
 
   return (
