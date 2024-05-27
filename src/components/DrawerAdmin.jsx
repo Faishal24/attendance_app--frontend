@@ -39,7 +39,7 @@ const DrawerAdmin = () => {
         <div className="p-5 flex flex-col gap-5">
           <h1 className="text-2xl font-bold text-center">Profil Karyawan</h1>
           <div className="flex-col flex justify-center items-center">
-            <img src={Profile} className="w-72 rounded-2xl" />
+            <img src={Profile} className="w-44 rounded-2xl" />
           </div>
           <table className="border-collapse border-none">
             <tbody>
@@ -84,6 +84,53 @@ const DrawerAdmin = () => {
                 <td className="border px-4 py-2 font-bold border-none">:</td>
                 <td className="border px-4 py-2 border-none">
                   {selectedEmployee.role == "employee" ? "Karyawan" : "Admin"}
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  Jenis Kelamin
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  {selectedEmployee.gender == "male"
+                    ? "Laki-laki"
+                    : "Perempuan"}
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  Tempat Lahir
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  {selectedEmployee.tempat_lahir}
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  Tanggal Lahir
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  {selectedEmployee.tanggal_lahir}
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  Agama
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  {selectedEmployee.agama}
+                </td>
+              </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  No. Telepon
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  {selectedEmployee.telepon}
                 </td>
               </tr>
             </tbody>
