@@ -42,50 +42,7 @@ const Tables = () => {
   const test = () => {
     console.log(mergedData);
   };
-  const dataHadir = [
-    {
-      date: "23 Mei 2024",
-      name: "Jane Roe",
-      time1: "06:41",
-      time2: "15:58",
-      status: "Hadir",
-    },
-    {
-      date: "23 Mei 2024",
-      name: "Richard Roe",
-      time1: "06:42",
-      time2: "15:58",
-      status: "Hadir",
-    },
-    {
-      date: "23 Mei 2024",
-      name: "Alex Smith",
-      time1: "06:48",
-      time2: "15:59",
-      status: "Hadir",
-    },
-    {
-      date: "23 Mei 2024",
-      name: "John Doe",
-      time1: "06:49",
-      time2: "15:59",
-      status: "Hadir",
-    },
-    {
-      date: "23 Mei 2024",
-      name: "Alice Johnson",
-      time1: "06:52",
-      time2: "15:59",
-      status: "Hadir",
-    },
-    {
-      date: "23 Mei 2024",
-      name: "Michael Brown",
-      time1: "06:56",
-      time2: "15:59",
-      status: "Hadir",
-    },
-  ];
+  
   return (
     <div className="overflow-x-auto mt-3">
       <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">
@@ -107,7 +64,7 @@ const Tables = () => {
             <th className="text-left py-3 px-4 font-semibold text-sm">
               Status
             </th>
-            <th className="text-left py-3 px-4 font-semibold text-sm">Aksi</th>
+            {/* <th className="text-left py-3 px-4 font-semibold text-sm">Aksi</th> */}
           </tr>
         </thead>
         <tbody className="text-gray-700">
@@ -133,16 +90,15 @@ const Tables = () => {
                     ? "Terlambat"
                     : "Hadir"}
                 </td>
-                <td className="text-left py-3 px-4">
+                {/* <td className="text-left py-3 px-4">
                   <button className="py-1 px-2 bg-red-500 text-white rounded-lg">
                     Hapus
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
         </tbody>
       </table>
-      <button className="mt-5 py-2 px-3 bg-secondary-dark text-white rounded-lg hover:bg-secondary-hover2">Unduh</button>
     </div>
   );
 };

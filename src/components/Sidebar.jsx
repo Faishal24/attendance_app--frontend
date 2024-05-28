@@ -24,7 +24,7 @@ const Sidebar = () => {
         <li className="px-2">
           <p className="px-2 text-secondary-text">Home</p>
           <ul>
-            <Link to="/dashboard">
+            <Link to="/">
               <li className="py-3 px-2 hover:bg-secondary-hover hover:rounded-md flex items-center gap-2">
                 <AiOutlineDashboard className="text-secondary-dark text-2xl" />
                 <p>Dashboard Admin</p>
