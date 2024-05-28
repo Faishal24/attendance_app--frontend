@@ -7,11 +7,15 @@ const Tables = () => {
   const [morning, setMorning] = useState([]);
   const [afternoon, setAfternoon] = useState([]);
   const [employee, setEmployee] = useState([]);
+  const hariIni = new Date().toISOString().split("T")[0]
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/admin/attendance/morning")
-      .then((result) => setMorning(result.data))
+      .then((result) => {
+        const filteredData = result.data.filter(item => item.date.split("T")[0] === hariIni);
+        setMorning(filteredData);
+      })
       .catch((error) => console.log(error));
 
     axios
@@ -33,8 +37,7 @@ const Tables = () => {
   });
 
   const test = () => {
-    console.log(mergedData);
-    console.log(process.env.IP_ADDRESS);
+    console.log()
   };
 
   return (

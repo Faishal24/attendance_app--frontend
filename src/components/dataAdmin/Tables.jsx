@@ -74,9 +74,6 @@ const Tables = () => {
                 </div>
               </td>
               <td className="text-left py-3 px-4 flex gap-2">
-                <button className="py-1 px-2 bg-amber-500 text-white rounded-lg">
-                  Edit
-                </button>
                 <button className="py-1 px-2 bg-red-500 text-white rounded-lg">
                   Hapus
                 </button>
