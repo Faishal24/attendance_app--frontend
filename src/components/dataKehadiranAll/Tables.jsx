@@ -84,7 +84,6 @@ const Tables = () => {
                 }
                 return false;
               })
-              .slice(0, 6)
               .map((row, index) => (
                 <tr
                   key={row.id}
@@ -123,7 +122,6 @@ const Tables = () => {
           <tbody className="text-gray-700">
             {mergedData
               .filter((item) => item.berangkat && item.berangkat !== null)
-              .slice(0, 6)
               .map((row, index) => (
                 <tr
                   key={row.id}
