@@ -7,6 +7,7 @@ import DataAdmin from "./pages/DataAdmin";
 import DataKaryawan from "./pages/DataKaryawan";
 import BuatQR from "./pages/BuatQR";
 import DetailKaryawan from "./pages/DetailKaryawan";
+import DataKehadiran from "./pages/DataKehadiranAll";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/datakehadiran" element={<Kehadiran />} />
+            <Route path="/allkehadiran" element={<DataKehadiran />} />
             <Route path="/datakaryawan" element={<DataKaryawan />} />
             <Route path="/dataadmin" element={<DataAdmin />} />
             <Route path="/buatqrcode" element={<BuatQR />} />

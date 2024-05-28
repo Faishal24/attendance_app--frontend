@@ -11,8 +11,8 @@ const Tables = () => {
 
   const now = new Date();
   const year = now.getFullYear();
-  const month = (now.getMonth() + 1).toString().padStart(2, "0");
-  const day = now.getDate().toString().padStart(2, "0");
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const day = (now.getDate()).toString().padStart(2, '0');
 
   const hariIni = `${year}-${month}-${day}`;
 
@@ -44,6 +44,10 @@ const Tables = () => {
     }
     return employee;
   });
+
+  const test = () => {
+    console.log(hariIni);
+  };
 
   return (
     <div className="flex w-full justify-between gap-10">
@@ -94,12 +98,6 @@ const Tables = () => {
               ))}
           </tbody>
         </table>
-        <button
-          className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover"
-          onClick={() => navigation.navigate("/allkehadiran")}
-        >
-          Lihat Selengkapnya
-        </button>
       </div>
 
       <div className="overflow-x-auto mt-8 w-2/4">
@@ -145,12 +143,6 @@ const Tables = () => {
               ))}
           </tbody>
         </table>
-        <button
-          className="px-4 py-2 w-full mt-2 rounded-lg font-semibold text-secondary-text bg-secondary hover:bg-secondary-hover"
-          onClick={() => navigation.navigate("/allkehadiran")}
-        >
-          Lihat Selengkapnya
-        </button>
       </div>
     </div>
   );
