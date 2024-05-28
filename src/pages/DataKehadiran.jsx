@@ -22,7 +22,7 @@ const Kehadiran = () => {
       </div>
       <div className="flex justify-end">
         <button
-          className="mt-5 py-2 px-3 bg-secondary-dark text-white rounded-lg hover:bg-secondary-hover2"
+          className="mt-5 py-2 px-3 bg-secondary-dark text-white rounded-lg hover:bg-secondary-hover2 transition duration-200"
           onClick={() => generatePDF(targetRef, options)}
         >
           Unduh

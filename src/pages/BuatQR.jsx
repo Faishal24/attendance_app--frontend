@@ -61,7 +61,7 @@ const BuatQR = () => {
             />
             <button
               onClick={generateQRCode}
-              className="w-full py-2 px-3 mb-[3em] border-2 rounded-lg text-white bg-secondary-dark hover:bg-secondary-hover2  "
+              className="w-full py-2 px-3 mb-[3em] border-2 rounded-lg text-white bg-secondary-dark hover:bg-secondary-hover2 transition duration-200"
             >
               Generate QR Code
             </button>
