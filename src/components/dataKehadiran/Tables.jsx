@@ -24,25 +24,37 @@ const Tables = () => {
   }, []);
 
   const mergedData = employee.map((employee) => {
-    const morningRecord = morning.find(
+    const morningRecords = morning.filter(
       (record) => record.user_id === employee._id
     );
-    const afternoonRecord = afternoon.find(
+    const afternoonRecords = afternoon.filter(
       (record) => record.user_id === employee._id
     );
 
-    if (morningRecord && afternoonRecord) {
-      employee.date = morningRecord.date;
-      employee.berangkat = morningRecord.time;
-      employee.pulang = afternoonRecord.time;
-    }
-    return employee;
+    const kehadiran = [];
+    morningRecords.forEach((morningRecord) => {
+      const correspondingAfternoonRecord = afternoonRecords.find(
+        (record) => record.date === morningRecord.date
+      );
+      kehadiran.push({
+        date: morningRecord.date,
+        berangkat: morningRecord.time,
+        pulang: correspondingAfternoonRecord
+          ? correspondingAfternoonRecord.time
+          : "",
+      });
+    });
+
+    return {
+      ...employee,
+      kehadiran,
+    };
   });
 
   const test = () => {
     console.log(mergedData);
   };
-  
+
   return (
     <div className="overflow-x-auto mt-3">
       <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">
@@ -69,36 +81,45 @@ const Tables = () => {
         </thead>
         <tbody className="text-gray-700">
           {mergedData
-            .filter(
-              (item) =>
-                (item.berangkat && item.berangkat !== null) ||
-                (item.pulang && item.pulang !== null)
+            .flatMap((employee) =>
+              employee.kehadiran.map((record) => ({
+                ...record,
+                name: employee.name, // Include the employee's name in each attendance record
+              }))
             )
-            .map((row, index) => (
-              <tr key={row.id} className={index % 2 === 0 ? "bg-gray-100" : ""}>
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .map((record, index) => (
+              <tr
+                key={record.date + "-" + record.user_id}
+                className={index % 2 === 0 ? "bg-gray-100" : ""}
+              >
                 <td className="text-left py-3 px-4">{index + 1}</td>
                 <td className="text-left py-3 px-4">
-                  {row.date.split("T")[0]}
+                  {record.date.split("T")[0]}
                 </td>
-                <td className="text-left py-3 px-4">{row.name}</td>
-                <td className="text-left py-3 px-4">{row.berangkat}</td>
-                <td className="text-left py-3 px-4">{row.pulang}</td>
+                <td className="text-left py-3 px-4">{record.name}</td>{" "}
+                {/* Include employee's name */}
+                <td className="text-left py-3 px-4">{record.berangkat}</td>
+                <td className="text-left py-3 px-4">{record.pulang}</td>
                 <td className="text-left py-3 px-4">
-                  {row.berangkat.split(":")[0] > 8 ||
-                  (row.berangkat.split(":")[0] == 8 &&
-                    row.berangkat.split(":")[1] > 0)
+                  {record.berangkat.split(":")[0] > 8 ||
+                  (record.berangkat.split(":")[0] == 8 &&
+                    record.berangkat.split(":")[1] > 0)
                     ? "Terlambat"
                     : "Hadir"}
                 </td>
-                {/* <td className="text-left py-3 px-4">
-                  <button className="py-1 px-2 bg-red-500 text-white rounded-lg">
-                    Hapus
-                  </button>
-                </td> */}
               </tr>
             ))}
         </tbody>
       </table>
+      {/* <td className="text-left py-3 px-4">
+        <button
+          className="py-1 px-2 bg-red-500 text-white rounded-lg"
+          onClick={() => test()}
+        >
+          Hapus
+        </button>
+      </td> */}
     </div>
   );
 };

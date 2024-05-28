@@ -19,7 +19,7 @@ const DrawerEmployee = ({ open, toggleDrawer }) => {
 
   const handleSubmit = async () => {
     await axios.post("http://localhost:3000/api/admin/add/employee", form);
-    // toggleDrawer(false);
+    toggleDrawer(false);
   }
 
   const handleChange = (e) => {
