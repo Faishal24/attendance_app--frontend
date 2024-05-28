@@ -18,7 +18,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
       if (response.data.user.role === "admin") {
-        navigate("/dashboard");
+        navigate("/");
       } else {
         navigate("/login");
         setError("Gunakan akun admin untuk login");
