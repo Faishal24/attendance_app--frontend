@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-secondary">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -57,7 +57,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
+            className="w-full bg-secondary-dark text-white py-2 rounded hover:bg-secondary-hover2 transition duration-200"
           >
             Login
           </button>
