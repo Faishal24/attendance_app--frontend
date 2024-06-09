@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import QRCode from "qrcode.react";
 import Select from "react-select";
 
+
 const BuatQR = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -21,7 +22,7 @@ const BuatQR = () => {
   const generateQRCode = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/admin/generate",
+        `${import.meta.env.VITE_IP_ADDRESS}/api/admin/generate`,
         { date, time }
       );
       setQRCodeData(response.data.qrCodeData);

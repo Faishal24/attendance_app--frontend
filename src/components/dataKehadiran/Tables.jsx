@@ -8,17 +8,17 @@ const Tables = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/admin/attendance/morning")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/attendance/morning`)
       .then((result) => setMorning(result.data))
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:3000/api/admin/attendance/afternoon")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/attendance/afternoon`)
       .then((result) => setAfternoon(result.data))
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:3000/api/admin/employee")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`)
       .then((result) => setEmployee(result.data))
       .catch((error) => console.log(error));
   }, []);
@@ -74,7 +74,10 @@ const Tables = () => {
               Jam Pulang
             </th>
             <th className="text-left py-3 px-4 font-semibold text-sm">
-              Status
+              Status Berangkat
+            </th>
+            <th className="text-left py-3 px-4 font-semibold text-sm">
+              Status Pulang
             </th>
             {/* <th className="text-left py-3 px-4 font-semibold text-sm">Aksi</th> */}
           </tr>
@@ -106,6 +109,13 @@ const Tables = () => {
                   (record.berangkat.split(":")[0] == 8 &&
                     record.berangkat.split(":")[1] > 0)
                     ? "Terlambat"
+                    : "Tepat Waktu"}
+                </td>
+                <td className="text-left py-3 px-4">
+                  {record.pulang.split(":")[0] > 17 ||
+                  (record.pulang.split(":")[0] == 17 &&
+                    record.pulang.split(":")[1] > 30)
+                    ? "Lembur"
                     : "Hadir"}
                 </td>
               </tr>

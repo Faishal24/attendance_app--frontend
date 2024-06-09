@@ -12,9 +12,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        `${import.meta.env.VITE_IP_ADDRESS}/api/auth/login`,
         { email, password }
       );
+      console.log(response)
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
       if (response.data.user.role === "admin") {

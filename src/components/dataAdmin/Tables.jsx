@@ -6,7 +6,7 @@ const Tables = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/admin/employee")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`)
       .then((result) => setAdmin(result.data))
       .catch((error) => console.log(error));
   });

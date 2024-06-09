@@ -14,7 +14,7 @@ const DrawerAdmin = () => {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          "http://localhost:3000/api/admin/employee"
+          `${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`
         );
         setEmployee(result.data);
       } catch (error) {

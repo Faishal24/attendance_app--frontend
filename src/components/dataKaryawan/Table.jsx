@@ -15,7 +15,7 @@ const Table = () => {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          "http://localhost:3000/api/admin/employee"
+          `${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`
         );
         setEmployee(result.data);
       } catch (error) {
@@ -150,9 +150,9 @@ const Table = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/admin/delete/employee/${id}`);
+      await axios.delete(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/delete/employee/${id}`);
       const result = await axios.get(
-        "http://localhost:3000/api/admin/employee"
+        `${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`
       );
       setEmployee(result.data);
       console.log("terhapus")

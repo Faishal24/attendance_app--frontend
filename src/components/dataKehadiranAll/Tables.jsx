@@ -18,7 +18,7 @@ const Tables = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/admin/attendance/morning")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/attendance/morning`)
       .then((result) => {
         const filteredData = result.data.filter(
           (item) => item.date.split("T")[0] === hariIni
@@ -28,7 +28,7 @@ const Tables = () => {
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:3000/api/admin/employee")
+      .get(`${import.meta.env.VITE_IP_ADDRESS}/api/admin/employee`)
       .then((result) => setEmployee(result.data))
       .catch((error) => console.log(error));
   }, []);
