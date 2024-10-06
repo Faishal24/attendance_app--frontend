@@ -1,13 +1,9 @@
 import React from 'react'
 import Tables from '../components/dataKehadiranAll/Tables'
+import { today } from '../lib/Today'
 
 const DataKeharianAll = () => {
-  // buat tanggal hari ini
-  const now = new Date()
-  const year = now.getFullYear()
-  const month = (now.getMonth() + 1).toString().padStart(2, '0')
-  const day = now.getDate().toString().padStart(2, '0')
-  const hariIni = `${year}-${month}-${day}`
+  const hariIni = today()
   return (
     <>
       <div className="flex items-center gap-2">
