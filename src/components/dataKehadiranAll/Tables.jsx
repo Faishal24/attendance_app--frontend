@@ -2,19 +2,12 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { LiaTimesCircle } from "react-icons/lia";
 import axios from "axios";
+import { today } from "../../lib/Today";
 
 const Tables = () => {
   const [morning, setMorning] = useState([]);
-  const [afternoon, setAfternoon] = useState([]);
   const [employee, setEmployee] = useState([]);
-  // const hariIni = new Date().toISOString().split("T")[0];
-
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = (now.getMonth() + 1).toString().padStart(2, '0');
-  const day = (now.getDate()).toString().padStart(2, '0');
-
-  const hariIni = `${year}-${month}-${day}`;
+  const hariIni = today()
 
   useEffect(() => {
     axios
@@ -54,7 +47,9 @@ const Tables = () => {
       <div className="overflow-x-auto mt-8 w-2/4">
         <div className="flex items-center gap-2">
           <LiaTimesCircle className="text-2xl" />
-          <p className="text-xl my-3">Daftar Pegawai Terlambat [Hari Ini]</p>
+          <p className="text-xl my-3">
+            Daftar Pegawai Terlambat [Hari Ini]
+          </p>
         </div>
 
         <table className="w-full bg-white rounded-lg border border-gray-700 overflow-hidden">

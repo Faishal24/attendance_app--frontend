@@ -11,10 +11,10 @@ const Dashboard = () => {
   return (
     <>
       <div className="flex justify-between items-center mb-3">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
         <button
           onClick={() => handleLogout()}
-          className="bg-red-500 text-white font-[500] px-4 py-1 rounded hover:bg-red-600 transition duration-200"
+          className="bg-red-500 text-white font-[500] px-4 py-1 rounded-xl hover:bg-red-600 transition duration-200"
         >
           Logout
         </button>

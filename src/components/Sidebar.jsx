@@ -13,7 +13,7 @@ import DrawerAdmin from "./DrawerAdmin";
 
 const Sidebar = () => {
   return (
-    <aside className="fixed left-0 w-64 h-full bg-secondary text-secondary-text pt-4">
+    <aside className="z-50 fixed left-0 w-64 h-full bg-secondary text-secondary-text pt-4">
       {/* <h1 className=" px-4 text-xl font-bold">Aplikasi Presensi</h1> */}
       <div className="px-4 py-2 flex items-center gap-5">
         <DrawerAdmin />

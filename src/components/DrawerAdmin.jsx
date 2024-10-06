@@ -37,7 +37,7 @@ const DrawerAdmin = () => {
     >
       {selectedEmployee ? (
         <div className="p-5 flex flex-col gap-5">
-          <h1 className="text-2xl font-bold text-center">Profil Karyawan</h1>
+          <h1 className="text-2xl font-bold text-center">Profil Admin</h1>
           <div className="flex-col flex justify-center items-center">
             <img src={Profile} className="w-44 rounded-2xl" />
           </div>
