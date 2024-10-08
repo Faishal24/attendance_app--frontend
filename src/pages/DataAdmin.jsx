@@ -6,8 +6,8 @@ const DataAdmin = () => {
   return (
     <div>
       <div className="flex items-center gap-2">
-        <AiOutlineUsergroupAdd className="text-3xl" />
-        <h1 className="text-2xl font-bold">Data Admin</h1>
+        <AiOutlineUsergroupAdd className="text-4xl" />
+        <h1 className="text-3xl font-bold">Data Admin</h1>
       </div>
       <Tables />
     </div>

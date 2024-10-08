@@ -15,8 +15,8 @@ const Kehadiran = () => {
     <>
       <div ref={targetRef}>
         <div className="flex items-center gap-2">
-          <AiOutlineFileSearch className="text-3xl" />
-          <h1 className="text-2xl font-bold">Data Kehadiran</h1>
+          <AiOutlineFileSearch className="text-4xl" />
+          <h1 className="text-3xl font-bold">Rekap Kehadiran</h1>
         </div>
         <Tables />
       </div>

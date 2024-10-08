@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import QRCode from "qrcode.react";
 import Select from "react-select";
-
+import { AiOutlineQrcode } from "react-icons/ai";
 
 const BuatQR = () => {
   const [date, setDate] = useState("");
@@ -42,7 +42,10 @@ const BuatQR = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-3">Generate QR Code</h1>
+      <div className="flex items-center gap-2 mb-3">
+        <AiOutlineQrcode className="text-4xl" />
+        <h1 className="text-3xl font-bold">Buat QR Code</h1>
+      </div>
       <div className="flex-col flex items-center ">
         <div className="flex gap-4 mb-5 w-full">
           <div className="flex flex-col gap-2 p-4 h-[35em] border-2 rounded-xl">
