@@ -137,6 +137,15 @@ const Table = () => {
                   {selectedEmployee.telepon}
                 </td>
               </tr>
+              <tr>
+                <td className="border px-4 py-2 font-bold border-none">
+                  Gaji
+                </td>
+                <td className="border px-4 py-2 font-bold border-none">:</td>
+                <td className="border px-4 py-2 border-none">
+                  Rp. {selectedEmployee.gaji.toLocaleString()}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
